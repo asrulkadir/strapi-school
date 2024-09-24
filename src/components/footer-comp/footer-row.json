@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_footer_comp_footer_rows",
+  "info": {
+    "displayName": "Footer Row"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "menulink": {
+      "type": "component",
+      "repeatable": true,
+      "component": "submenu.sub-menu"
+    }
+  }
+}

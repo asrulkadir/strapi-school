@@ -25,9 +25,6 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "mappedBy": "restaurants"
-    },
-    "menus": {
-      "type": "json"
     }
   }
 }

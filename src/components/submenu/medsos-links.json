@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_submenu_medsos_links",
+  "info": {
+    "displayName": "medsos-links"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

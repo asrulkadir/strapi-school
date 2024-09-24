@@ -1,75 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
-  collectionName: 'categories';
-  info: {
-    singularName: 'category';
-    pluralName: 'categories';
-    displayName: 'Category';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    restaurants: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::restaurant.restaurant'
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::category.category'
-    >;
-  };
-}
-
-export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
-  collectionName: 'restaurants';
-  info: {
-    singularName: 'restaurant';
-    pluralName: 'restaurants';
-    displayName: 'Restaurant';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    description: Schema.Attribute.Blocks;
-    categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
-    menus: Schema.Attribute.JSON;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::restaurant.restaurant'
-    >;
-  };
-}
-
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -555,6 +485,338 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
+  collectionName: 'banners';
+  info: {
+    singularName: 'banner';
+    pluralName: 'banners';
+    displayName: 'Banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Schema.Attribute.String;
+    text: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::banner.banner'>;
+  };
+}
+
+export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    restaurants: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::restaurant.restaurant'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
+  };
+}
+
+export interface ApiContactContact extends Struct.SingleTypeSchema {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'Contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address: Schema.Attribute.Text;
+    phone: Schema.Attribute.String;
+    email: Schema.Attribute.Email;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact.contact'
+    >;
+  };
+}
+
+export interface ApiFacilityFacility extends Struct.CollectionTypeSchema {
+  collectionName: 'facilities';
+  info: {
+    singularName: 'facility';
+    pluralName: 'facilities';
+    displayName: 'Facility';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::facility.facility'
+    >;
+  };
+}
+
+export interface ApiFooterFooter extends Struct.SingleTypeSchema {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    copyright: Schema.Attribute.String;
+    footer1: Schema.Attribute.Component<'footer-comp.footer-row', true>;
+    footer2: Schema.Attribute.Component<'footer-comp.footer-row', true>;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::footer.footer'>;
+  };
+}
+
+export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
+  collectionName: 'galleries';
+  info: {
+    singularName: 'gallery';
+    pluralName: 'galleries';
+    displayName: 'Gallery';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gallery.gallery'
+    >;
+  };
+}
+
+export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
+  collectionName: 'headers';
+  info: {
+    singularName: 'header';
+    pluralName: 'headers';
+    displayName: 'Header';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Schema.Attribute.String;
+    link: Schema.Attribute.String;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    submenu: Schema.Attribute.Component<'submenu.sub-menu', true>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::header.header'>;
+  };
+}
+
+export interface ApiNewsAndArticleNewsAndArticle
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'news_and_articles';
+  info: {
+    singularName: 'news-and-article';
+    pluralName: 'news-and-articles';
+    displayName: 'News and Articles';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::news-and-article.news-and-article'
+    >;
+  };
+}
+
+export interface ApiProfileProfile extends Struct.SingleTypeSchema {
+  collectionName: 'profiles';
+  info: {
+    singularName: 'profile';
+    pluralName: 'profiles';
+    displayName: 'Profile';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    history: Schema.Attribute.RichText;
+    description: Schema.Attribute.RichText;
+    vision: Schema.Attribute.RichText;
+    mission: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::profile.profile'
+    >;
+  };
+}
+
+export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
+  collectionName: 'restaurants';
+  info: {
+    singularName: 'restaurant';
+    pluralName: 'restaurants';
+    displayName: 'Restaurant';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    description: Schema.Attribute.Blocks;
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::restaurant.restaurant'
+    >;
+  };
+}
+
+export interface ApiTeacherAndStaffTeacherAndStaff
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'teacher_and_staffs';
+  info: {
+    singularName: 'teacher-and-staff';
+    pluralName: 'teacher-and-staffs';
+    displayName: 'Teacher And Staff';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    role: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::teacher-and-staff.teacher-and-staff'
+    >;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -920,8 +1182,6 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      'api::category.category': ApiCategoryCategory;
-      'api::restaurant.restaurant': ApiRestaurantRestaurant;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
@@ -932,6 +1192,17 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::banner.banner': ApiBannerBanner;
+      'api::category.category': ApiCategoryCategory;
+      'api::contact.contact': ApiContactContact;
+      'api::facility.facility': ApiFacilityFacility;
+      'api::footer.footer': ApiFooterFooter;
+      'api::gallery.gallery': ApiGalleryGallery;
+      'api::header.header': ApiHeaderHeader;
+      'api::news-and-article.news-and-article': ApiNewsAndArticleNewsAndArticle;
+      'api::profile.profile': ApiProfileProfile;
+      'api::restaurant.restaurant': ApiRestaurantRestaurant;
+      'api::teacher-and-staff.teacher-and-staff': ApiTeacherAndStaffTeacherAndStaff;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;
