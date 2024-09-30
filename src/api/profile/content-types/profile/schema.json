@@ -4,7 +4,8 @@
   "info": {
     "singularName": "profile",
     "pluralName": "profiles",
-    "displayName": "Profile"
+    "displayName": "Profile Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,11 @@
     },
     "mission": {
       "type": "richtext"
+    },
+    "facility": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::facility.facility"
     }
   }
 }

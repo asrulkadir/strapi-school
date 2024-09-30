@@ -33,14 +33,20 @@
       "component": "footer-comp.footer-row"
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "footer3": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer-comp.footer-row"
     }
   }
 }

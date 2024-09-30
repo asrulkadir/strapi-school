@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banners": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::banner.banner"
+    },
+    "news_and_article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::news-and-article.news-and-article"
+    },
+    "facility": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::facility.facility"
+    },
+    "gallery": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gallery.gallery"
+    },
+    "teacher_and_staff": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::teacher-and-staff.teacher-and-staff"
+    }
+  }
+}
