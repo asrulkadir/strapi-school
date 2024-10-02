@@ -806,10 +806,12 @@ export interface ApiProfileProfile extends Struct.SingleTypeSchema {
   };
   attributes: {
     history: Schema.Attribute.RichText;
-    description: Schema.Attribute.RichText;
     vision: Schema.Attribute.RichText;
     mission: Schema.Attribute.RichText;
-    facility: Schema.Attribute.Relation<'oneToOne', 'api::facility.facility'>;
+    banner_img: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    title: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

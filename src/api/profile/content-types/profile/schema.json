@@ -15,19 +15,25 @@
     "history": {
       "type": "richtext"
     },
-    "description": {
-      "type": "richtext"
-    },
     "vision": {
       "type": "richtext"
     },
     "mission": {
       "type": "richtext"
     },
-    "facility": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::facility.facility"
+    "banner_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "text"
     }
   }
 }
