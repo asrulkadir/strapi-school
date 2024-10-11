@@ -1,5 +1,16 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface FooterCompFooterRow extends Struct.ComponentSchema {
+  collectionName: 'components_footer_comp_footer_rows';
+  info: {
+    displayName: 'Footer Row';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    menulink: Schema.Attribute.Component<'submenu.sub-menu', true>;
+  };
+}
+
 export interface SubmenuSubMenu extends Struct.ComponentSchema {
   collectionName: 'components_submenu_sub_menus';
   info: {
@@ -23,23 +34,12 @@ export interface SubmenuMedsosLinks extends Struct.ComponentSchema {
   };
 }
 
-export interface FooterCompFooterRow extends Struct.ComponentSchema {
-  collectionName: 'components_footer_comp_footer_rows';
-  info: {
-    displayName: 'Footer Row';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-    menulink: Schema.Attribute.Component<'submenu.sub-menu', true>;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'footer-comp.footer-row': FooterCompFooterRow;
       'submenu.sub-menu': SubmenuSubMenu;
       'submenu.medsos-links': SubmenuMedsosLinks;
-      'footer-comp.footer-row': FooterCompFooterRow;
     }
   }
 }
